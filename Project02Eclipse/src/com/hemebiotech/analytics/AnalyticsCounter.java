@@ -11,7 +11,19 @@ public class AnalyticsCounter {
 	
 	public static void main(String args[]) throws Exception {
 		// first get input
-		BufferedReader reader = new BufferedReader (new FileReader("symptoms.txt"));
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		 BufferedReader reader = new BufferedReader (new FileReader("..\\Project_DA_Java_EN_Come_to_the_Rescue_of_a_Java_Application\\Project02Eclipse\\src\\com\\hemebiotech\\analytics\\symptoms.txt"));
 		String line = reader.readLine();
 
 		int i = 0;	// set i to 0
@@ -39,5 +51,9 @@ public class AnalyticsCounter {
 		writer.write("rash: " + rashCount + "\n");
 		writer.write("dialated pupils: " + pupilCount + "\n");
 		writer.close();
+		
+		//System.out.println(line);
+		
+		
 	}
 }
