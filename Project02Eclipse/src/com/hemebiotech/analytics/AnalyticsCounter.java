@@ -26,97 +26,71 @@ import java.io.IOException;
 
 
 import javax.swing.text.html.parser.Parser;
+/** 
+ * Analytics Counter is a class that calculates the number of occurrences of words in a file.
+ * @author BEN OUIRANE  Hajeur
+ * @version 1.0
+ */
 
 public class AnalyticsCounter {
 	
 	  public ISymptomReader symptomReader;
-	  
 	  public ISymptomWriter symptomWriter;
-	  
-	  public AnalyticsCounter(ISymptomReader reader,
-			ISymptomWriter writer) {
+	  static ReadSymptomDataFromFile readSymptomFromFile;
+	  static WriteSymptomDataToFile  writeSymptomDataToFile;
+	  public static ReadSymptomDataFromFile readSymptomDataFromFile = new ReadSymptomDataFromFile();
+	  final static String outputFilePath = "..\\Project_DA_Java_EN_Come_to_the_Rescue_of_a_Java_Application\\result.out"; 
+	  String filePath = "..\\Project_DA_Java_EN_Come_to_the_Rescue_of_a_Java_Application\\Project02Eclipse\\src\\com\\hemebiotech\\analytics\\symptoms.txt";
+
+	  public AnalyticsCounter(ISymptomReader reader, ISymptomWriter writer) {
 		symptomReader = reader;
 		symptomWriter = writer;
 	   }
-	  
-	  ReadSymptomDataFromFile readSymtonFromFile;
-	  
-	  public List<String> getSymptoms() { 
-		  
-		  return  readSymtonFromFile.GetSymptoms();
+	  	  /**
+	  	   * This is a call to the getSymptoms method of object readSymptomFromFile of type ReadSymptomDataFromFile.
+	  	   * @return List of symptoms.
+	  	   */
+	  public static   List<String> getSymptoms() { 
+		  return  readSymptomDataFromFile.getSymptoms();
 	  }
 
+	  /**
+	   * Calculate the number of occurrences of words in a file.
+	   * @param symptoms  is a Map which contains the symptoms of the files.
+	   * @return  a Map which contains the number of occurrences of symptoms <symptom, occurrence>
+	   */
 	  public static Map<String, Integer> countSymptoms(List<String> symptoms) {
-		  
-	        BufferedReader br = null;
-			try {
-				br = new BufferedReader(new FileReader("..\\Project_DA_Java_EN_Come_to_the_Rescue_of_a_Java_Application\\Project02Eclipse\\src\\com\\hemebiotech\\analytics\\symptoms.txt"));
-			} catch (FileNotFoundException e1) {
-
-				e1.printStackTrace();
-			}
-	        String st;
-	    	Hashtable<String, Integer> wordCountTable = new Hashtable<String, Integer>();
-	    	int minWordLength = 2;
-	    	 try {
-				while ((st = br.readLine()) != null)
-				{
-					String uniqueWord = st.toLowerCase();
-					if (uniqueWord.length() > minWordLength) 
-					{
-						if (wordCountTable.containsKey(uniqueWord))	{
-							wordCountTable.replace(uniqueWord, wordCountTable.get(uniqueWord),
-									wordCountTable.get(uniqueWord).intValue() + 1);
-						} else {
-							wordCountTable.put(uniqueWord, 1);
-						}
-					}
-				}
-			} catch (IOException e1) {
-				e1.printStackTrace();
-			}
-	    	wordCountTable.entrySet().forEach(entry -> {
-	    		//System.out.println(entry.getKey() + ": " + entry.getValue());
-	    	});
-			return wordCountTable;
+	        List<String> symptomsList;
+		    symptomsList = getSymptoms();
+	         HashMap<String, Integer> wordOcurence = new HashMap<String, Integer>();
+		    for (String c : symptomsList){
+		         if (wordOcurence.containsKey(c)){
+		        	 wordOcurence.put(c, wordOcurence.get(c) + 1);}
+		         else{
+		        	 wordOcurence.put(c, 1);}
+		      }
+			return wordOcurence; 
 	     }
-	  public static Map<String, Integer> sortSymptoms(Map<String, Integer> symptoms) {
-		  
-		  // TreeMap to store values of HashMap
+	  
+	  /**
+	   * Method that sorts the Map of symptoms and occurrences in alphabetical order.
+	   * @param symptoms  is a Map which contains the symptoms of the files.
+	   * @return  a Map of symptoms and occurrences in alphabetical order.
+	   */
+	  public static Map<String, Integer> sortSymptoms(Map<String, Integer> symptoms) { 
 	        TreeMap<String, Integer> sorted = new TreeMap<>();
 	          sorted.putAll(symptoms);
-		  
-	        // Display the TreeMap which is naturally sorted
-	   /*    for (Map.Entry<String, Integer> entry : sorted.entrySet()) 
-	            System.out.println( entry.getKey() + 
-	                         ", Value = " + entry.getValue()); 
-	                         */
 	        return sorted ;
 	  }
-
-		 final static String outputFilePath = "..\\Project_DA_Java_EN_Come_to_the_Rescue_of_a_Java_Application\\result.out"; 
-
-	  public static void writeSymptoms(Map<String, Integer>
-	  symptoms) { 
-		  try {
-	             BufferedWriter f_writer
-	                 = new BufferedWriter(new FileWriter(
-	                		 outputFilePath));
-	             
-	             for (Entry<String, Integer> entry : 
-	            	 symptoms.entrySet()) { 
-	            	 f_writer.write(entry.getKey() + ":"
-	                         + entry.getValue()); 
-	            	 f_writer.newLine(); 
-	            }  
-	             f_writer.close();
-	         }
-	         catch (IOException e) {
-	             System.out.print(e.getMessage());
-	         }
-	     }		
 	  
-	
-		 
+	  /**
+	   *  writeSymptoms method that writes the result to the output file using ISymptomWriter instance already created.
+	   * @param symptoms  is a Map which contains the symptoms of the files.
+	   * @return  Void.
+	   */
+	  public  void writeSymptoms(Map<String, Integer> symptoms) { 
+		  writeSymptomDataToFile = new WriteSymptomDataToFile();
+		  writeSymptomDataToFile.writeSymptoms(symptoms);	 
+	  }		  
 }
 

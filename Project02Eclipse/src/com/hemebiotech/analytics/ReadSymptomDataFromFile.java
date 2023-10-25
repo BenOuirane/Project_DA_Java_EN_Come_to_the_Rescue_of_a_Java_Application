@@ -4,7 +4,9 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Simple brute force implementation
@@ -12,27 +14,24 @@ import java.util.List;
  */
 public class ReadSymptomDataFromFile implements ISymptomReader {
 
-	private String filepath;
-	
+      String filePath = "..\\Project_DA_Java_EN_Come_to_the_Rescue_of_a_Java_Application\\Project02Eclipse\\src\\com\\hemebiotech\\analytics\\symptoms.txt";
+
 	/**
 	 * 
-	 * @param filepath a full or partial path to file with symptom strings in it, one per line
+	 * @param filePathO a full or partial path to file with symptom strings in it, one per line
 	 */
-	public ReadSymptomDataFromFile (String filepath) {
-		this.filepath = filepath;
-	}
-	
+
 	@Override
-	public List<String> GetSymptoms() {
+	public List<String> getSymptoms() {
 		ArrayList<String> result = new ArrayList<String>();
-		
-		if (filepath != null) {
+		if (filePath != null) {
 			try {
-				BufferedReader reader = new BufferedReader (new FileReader(filepath));
+				BufferedReader reader = new BufferedReader (new FileReader(filePath));
 				String line = reader.readLine();
 				
 				while (line != null) {
 					result.add(line);
+
 					line = reader.readLine();
 				}
 				reader.close();
