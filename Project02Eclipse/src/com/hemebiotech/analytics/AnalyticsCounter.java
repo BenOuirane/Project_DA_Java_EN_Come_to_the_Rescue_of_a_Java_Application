@@ -42,20 +42,23 @@ public class AnalyticsCounter {
 	  final static String outputFilePath = "..\\Project_DA_Java_EN_Come_to_the_Rescue_of_a_Java_Application\\result.out"; 
 	  String filePath = "..\\Project_DA_Java_EN_Come_to_the_Rescue_of_a_Java_Application\\Project02Eclipse\\src\\com\\hemebiotech\\analytics\\symptoms.txt";
 
+	  /** 
+	  * Class constructor.
+	  */
 	  public AnalyticsCounter(ISymptomReader reader, ISymptomWriter writer) {
 		symptomReader = reader;
 		symptomWriter = writer;
 	   }
-	  	  /**
-	  	   * This is a call to the getSymptoms method of object readSymptomFromFile of type ReadSymptomDataFromFile.
-	  	   * @return List of symptoms.
-	  	   */
+	   /**
+	   * This is a call to the getSymptoms method of object readSymptomFromFile of type ReadSymptomDataFromFile.
+	   * @return List of symptoms.
+	   */
 	  public static   List<String> getSymptoms() { 
 		  return  readSymptomDataFromFile.getSymptoms();
 	  }
 
 	  /**
-	   * Calculate the number of occurrences of words in a file.
+	   * Calculates the number of occurrences of words in a file.
 	   * @param symptoms  is a Map which contains the symptoms of the files.
 	   * @return  a Map which contains the number of occurrences of symptoms <symptom, occurrence>
 	   */
@@ -73,7 +76,7 @@ public class AnalyticsCounter {
 	     }
 	  
 	  /**
-	   * Method that sorts the Map of symptoms and occurrences in alphabetical order.
+	   * Sorts the Map of symptoms  in alphabetical order.
 	   * @param symptoms  is a Map which contains the symptoms of the files.
 	   * @return  a Map of symptoms and occurrences in alphabetical order.
 	   */
@@ -84,9 +87,8 @@ public class AnalyticsCounter {
 	  }
 	  
 	  /**
-	   *  writeSymptoms method that writes the result to the output file using ISymptomWriter instance already created.
+	   * Writes the result to the output file using ISymptomWriter instance already created.
 	   * @param symptoms  is a Map which contains the symptoms of the files.
-	   * @return  Void.
 	   */
 	  public  void writeSymptoms(Map<String, Integer> symptoms) { 
 		  writeSymptomDataToFile = new WriteSymptomDataToFile();

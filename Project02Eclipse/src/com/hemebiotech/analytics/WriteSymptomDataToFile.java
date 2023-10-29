@@ -23,12 +23,6 @@ public class WriteSymptomDataToFile implements ISymptomWriter{
 	 final static String outputFilePath = "..\\Project_DA_Java_EN_Come_to_the_Rescue_of_a_Java_Application\\result.out"; 
      File file = new File("..\\Project_DA_Java_EN_Come_to_the_Rescue_of_a_Java_Application\\Project02Eclipse\\src\\com\\hemebiotech\\analytics\\symptoms.txt");
 
-     
-     /**
-	   * The methodes writes the symptoms and their quantities to the result.out file in the form of Map<Key, Value>.
-	   * @param Symptoms is a Map which contains the symptoms in the form <Key, Value>
-	   */
-     
 	@Override
 	public void writeSymptoms(Map<String, Integer> symptoms){
 		  try {

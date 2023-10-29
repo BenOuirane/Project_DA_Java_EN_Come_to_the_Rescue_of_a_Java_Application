@@ -11,7 +11,8 @@ import java.util.Map;
 public interface ISymptomWriter {
 	
 	/**
-	 * Method that writes into file.
+	 * Writes the symptoms and their quantities to the result.out file in the form of Map<Key, Value>.
+	 * @param Symptoms is a Map which contains the symptoms in the form <Key, Value>
 	 * @return Map of symptoms saved into output file.
 	 */
 	public void writeSymptoms(Map<String, Integer> symptoms);
