@@ -53,7 +53,7 @@ public class AnalyticsCounter {
 	   * This is a call to the getSymptoms method of object readSymptomFromFile of type ReadSymptomDataFromFile.
 	   * @return List of symptoms.
 	   */
-	  public static   List<String> getSymptoms() { 
+	  public    List<String> getSymptoms() { 
 		  return  readSymptomDataFromFile.getSymptoms();
 	  }
 
@@ -62,7 +62,7 @@ public class AnalyticsCounter {
 	   * @param symptoms  is a Map which contains the symptoms of the files.
 	   * @return  a Map which contains the number of occurrences of symptoms <symptom, occurrence>
 	   */
-	  public static Map<String, Integer> countSymptoms(List<String> symptoms) {
+	  public  Map<String, Integer> countSymptoms(List<String> symptoms) {
 	         HashMap<String, Integer> wordOcurence = new HashMap<String, Integer>();
 		    for (String c : symptoms){
 		         if (wordOcurence.containsKey(c)){
@@ -78,7 +78,7 @@ public class AnalyticsCounter {
 	   * @param symptoms  is a Map which contains the symptoms of the files.
 	   * @return  a Map of symptoms and occurrences in alphabetical order.
 	   */
-	  public static Map<String, Integer> sortSymptoms(Map<String, Integer> symptoms) { 
+	  public  Map<String, Integer> sortSymptoms(Map<String, Integer> symptoms) { 
 	        TreeMap<String, Integer> sorted = new TreeMap<>();
 	          sorted.putAll(symptoms);
 	        return sorted ;

@@ -14,8 +14,8 @@ public class Main {
 		  Map<String, Integer> wordOcurence ;
 		  Map<String, Integer> sorted;
 	      AnalyticsCounter analyticsCounter = new AnalyticsCounter(symptomReader,symptomWriter );
-	    	symptomsList =	AnalyticsCounter.getSymptoms();
-	    	wordOcurence =  AnalyticsCounter.countSymptoms(symptomsList);
+	    	symptomsList =	analyticsCounter.getSymptoms();
+	    	wordOcurence =  analyticsCounter.countSymptoms(symptomsList);
 	    	sorted       =  analyticsCounter.sortSymptoms(wordOcurence);
 	    	analyticsCounter.writeSymptoms(sorted);
 		

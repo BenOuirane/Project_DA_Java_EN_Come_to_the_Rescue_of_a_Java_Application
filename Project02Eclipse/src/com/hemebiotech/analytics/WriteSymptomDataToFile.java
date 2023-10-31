@@ -21,7 +21,6 @@ import java.util.Map.Entry;
 public class WriteSymptomDataToFile implements ISymptomWriter{
 	
 	 final static String outputFilePath = "..\\Project_DA_Java_EN_Come_to_the_Rescue_of_a_Java_Application\\result.out"; 
-     File file = new File("..\\Project_DA_Java_EN_Come_to_the_Rescue_of_a_Java_Application\\Project02Eclipse\\src\\com\\hemebiotech\\analytics\\symptoms.txt");
 
 	@Override
 	public void writeSymptoms(Map<String, Integer> symptoms){
