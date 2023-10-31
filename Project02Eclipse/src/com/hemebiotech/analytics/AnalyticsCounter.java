@@ -63,10 +63,8 @@ public class AnalyticsCounter {
 	   * @return  a Map which contains the number of occurrences of symptoms <symptom, occurrence>
 	   */
 	  public static Map<String, Integer> countSymptoms(List<String> symptoms) {
-	        List<String> symptomsList;
-		    symptomsList = getSymptoms();
 	         HashMap<String, Integer> wordOcurence = new HashMap<String, Integer>();
-		    for (String c : symptomsList){
+		    for (String c : symptoms){
 		         if (wordOcurence.containsKey(c)){
 		        	 wordOcurence.put(c, wordOcurence.get(c) + 1);}
 		         else{

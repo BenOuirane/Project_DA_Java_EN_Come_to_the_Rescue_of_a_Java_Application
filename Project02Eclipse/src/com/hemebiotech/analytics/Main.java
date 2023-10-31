@@ -9,9 +9,15 @@ public class Main {
 		
 		  ISymptomReader symptomReader = null;
 		  ISymptomWriter symptomWriter = null;
-		  List<String> symptoms = null;		
-	    	AnalyticsCounter analyticsCounter = new AnalyticsCounter(symptomReader,symptomWriter );
-	    	analyticsCounter.writeSymptoms(analyticsCounter.sortSymptoms(AnalyticsCounter.countSymptoms(symptoms)));
+		  List<String> symptoms = null;	
+		  List<String> symptomsList;
+		  Map<String, Integer> wordOcurence ;
+		  Map<String, Integer> sorted;
+	      AnalyticsCounter analyticsCounter = new AnalyticsCounter(symptomReader,symptomWriter );
+	    	symptomsList =	AnalyticsCounter.getSymptoms();
+	    	wordOcurence =  AnalyticsCounter.countSymptoms(symptomsList);
+	    	sorted       =  analyticsCounter.sortSymptoms(wordOcurence);
+	    	analyticsCounter.writeSymptoms(sorted);
 		
 
 	}
